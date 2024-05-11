@@ -1,0 +1,19 @@
+h1 {
+  font-size: 3em;
+  font-family: 'outfit-light';
+}
+
+h2 {
+  font-size: 1.5em;
+  font-family: 'outfit-light';
+
+  margin-top: 1rem;
+
+}
+
+main {
+  width: 90%;
+  max-width: 50rem;
+  margin-inline: auto;
+  padding: 4rem 0;
+}
