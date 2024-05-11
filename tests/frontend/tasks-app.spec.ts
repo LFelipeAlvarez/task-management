@@ -51,7 +51,7 @@ test.describe('It is not the first visit', () => {
 
 
 const DEFAULT_ICON = "http://localhost:5173/coffee.svg"
-const DEFAULT_STATUS = 1
+// const DEFAULT_STATUS = 1
 const TASK = {
   title: "Go to the gym",
   description: "Let's build some muscles",
