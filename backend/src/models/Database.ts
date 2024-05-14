@@ -11,7 +11,7 @@ export class Database {
         host: DB_HOST,
         user: DB_USER,
         password: DB_PASSWORD,
-        port: DB_PORT as number,
+        port: +DB_PORT,
         database: DB_NAME
       })
     } catch (error) {
