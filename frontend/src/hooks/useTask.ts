@@ -1,6 +1,7 @@
 import { createTask, deleteTaskHelper, getTasksByBoardId, updateTaskHelper } from '../helpers/manageDataFromApi';
 import { useTasks } from '../context/TasksContext';
 import { Task, TaskWithoutBoardId, TaskWithoutId } from '../types';
+import { DOMAIN } from '../consts';
 
 const useTask = () => {
 
@@ -18,7 +19,7 @@ const useTask = () => {
         title: task.title.replace(/\s{2,}/g, ' ').trim(),
         description: task.description?.replace(/\s{2,}/g, ' ').trim(),
         status: task.status ?? 1,
-        icon: task.icon ?? `${import.meta.env.VITE_DOMAIN}coffee.svg`,
+        icon: task.icon ?? `${DOMAIN}coffee.svg`,
         board_id: task.board_id
       }
       const newTaskCreated = await createTask(taskToAdd)

@@ -1,4 +1,5 @@
 import { Pool, createPool } from 'mysql2/promise'
+import { DB_HOST, DB_NAME, DB_PASSWORD, DB_PORT, DB_USER } from '../config/enviromentVars'
 
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class Database {
@@ -7,11 +8,11 @@ export class Database {
   public static async ConnectToDatabase (): Promise<Pool> {
     try {
       this.pool = createPool({
-        host: 'localhost',
-        user: 'root',
-        password: 'lf1204',
-        port: 3306,
-        database: 'tasks_management'
+        host: DB_HOST,
+        user: DB_USER,
+        password: DB_PASSWORD,
+        port: DB_PORT as number,
+        database: DB_NAME
       })
     } catch (error) {
       console.error('Error connecting to the database')

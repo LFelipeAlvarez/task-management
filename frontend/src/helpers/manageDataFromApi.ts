@@ -1,7 +1,9 @@
+import { API_URL } from "../consts";
 import { Task, TaskWithoutBoardId, TaskWithoutId } from "../types";
 
+
 export const createBoard = async (): Promise<Task['board_id']> => {
-    const resp = await fetch(`${import.meta.env.VITE_API_URL}board`, {
+    const resp = await fetch(`${API_URL}board`, {
         method: 'POST'
     });
 
@@ -11,7 +13,7 @@ export const createBoard = async (): Promise<Task['board_id']> => {
 }
 
 export const getTasksByBoardId = async (boardId: string): Promise<Task[]> => {
-    const resp = await fetch(`${import.meta.env.VITE_API_URL}tasks?board=${boardId}`);
+    const resp = await fetch(`${API_URL}tasks?board=${boardId}`);
     if (!resp.ok) throw new Error(`Failed to get tasks: ${resp.statusText}`);
     const tasks = await resp.json();
     return tasks
@@ -19,7 +21,7 @@ export const getTasksByBoardId = async (boardId: string): Promise<Task[]> => {
 
 
 export const existsThisBoard = async (boardId: string) => {
-    const resp = await fetch(`${import.meta.env.VITE_API_URL}board/${boardId}`);
+    const resp = await fetch(`${API_URL}board/${boardId}`);
     if (!resp.ok) throw new Error(`Failed to get board: ${resp.statusText}`);
     const [board] = await resp.json();
     return Boolean(board)
@@ -27,7 +29,7 @@ export const existsThisBoard = async (boardId: string) => {
 
 export const createTask = async (task: TaskWithoutId): Promise<Task> => {
     const body = JSON.stringify(task)
-    const resp = await fetch(`${import.meta.env.VITE_API_URL}tasks`,
+    const resp = await fetch(`${API_URL}tasks`,
         {
             headers: {
                 'Content-Type': 'application/json'
@@ -46,7 +48,7 @@ export const createTask = async (task: TaskWithoutId): Promise<Task> => {
 
 export const updateTaskHelper = async (task: TaskWithoutBoardId): Promise<Task> => {
     const body = JSON.stringify(task)
-    const resp = await fetch(`${import.meta.env.VITE_API_URL}tasks/${task.id}`,
+    const resp = await fetch(`${API_URL}tasks/${task.id}`,
         {
             headers: {
                 'Content-Type': 'application/json'
@@ -65,6 +67,6 @@ export const updateTaskHelper = async (task: TaskWithoutBoardId): Promise<Task> 
 }
 
 export const deleteTaskHelper = async (taskId: Task['id']) => {
-    await fetch(`${import.meta.env.VITE_API_URL}tasks/${taskId}`, { method: 'DELETE' });
+    await fetch(`${API_URL}tasks/${taskId}`, { method: 'DELETE' });
 
 }

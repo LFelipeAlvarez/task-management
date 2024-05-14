@@ -1,12 +1,13 @@
 import { Task, TaskWithoutBoardId } from "./types"
 
-export const DOMAIN = import.meta.env.VITE_DOMAIN
+export const DOMAIN = import.meta.env.VITE_DOMAIN || 'http://localhost:5173/'
+export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/'
 
 export const initialTask: TaskWithoutBoardId = {
   id: 0,
   title: '',
   description: '',
-  icon: `${import.meta.env.VITE_DOMAIN}coffee.svg`,
+  icon: `${DOMAIN}coffee.svg`,
   status: 1
 }
 
