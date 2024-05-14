@@ -1,4 +1,4 @@
-const allowedOrigins = ['http://example.com', 'http://localhost:5173', 'https://task-management-production-13ce.up.railway.app']
+const allowedOrigins = ['http://example.com', 'http://localhost:5173', 'https://tasks-challenge.netlify.app/']
 
 export const corsOptions = {
   origin: (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {
