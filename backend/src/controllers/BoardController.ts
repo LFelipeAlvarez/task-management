@@ -5,7 +5,7 @@ import { BoardModel } from '../models/BoardModel'
 export class BoardController {
   static async CreateBoard (_req: Request, res: Response): Promise<void> {
     const response = await BoardModel.createBoard()
-    res.json(response)
+    res.status(201).json(response)
   }
 
   static async getBoard (req: Request, res: Response): Promise<void> {
