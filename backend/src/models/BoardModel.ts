@@ -2,10 +2,11 @@
 import { RowDataPacket } from 'mysql2'
 import { Board } from '../types'
 import { Database } from './Database'
+import { v4 as uuidv4 } from 'uuid'
 
 export class BoardModel {
   static async createBoard (): Promise<Board> {
-    const boardId = crypto.randomUUID()
+    const boardId = uuidv4()
     const pool = await Database.ConnectToDatabase()
     const query = 'INSERT INTO board VALUES (?)'
     await pool.execute(query, [boardId])
